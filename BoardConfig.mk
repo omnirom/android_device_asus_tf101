@@ -121,10 +121,8 @@ BOARD_HAVE_GPS := true
 
 # Ventana HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-	libdumpstate.ventana
-
-# Support for dock battery
-TARGET_HAS_DOCK_BATTERY := true
+	libdumpstate.ventana \
+	libhealthd.ventana
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
