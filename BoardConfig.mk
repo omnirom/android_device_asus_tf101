@@ -89,6 +89,8 @@ BOARD_NEED_OMX_COMPAT := true
 BOARD_USE_SKIA_LCDTEXT := true
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.board
+
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
 #TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
@@ -121,10 +123,8 @@ BOARD_HAVE_GPS := true
 
 # Ventana HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-	libdumpstate.ventana
-
-# Support for dock battery
-TARGET_HAS_DOCK_BATTERY := true
+	libdumpstate.ventana \
+	libhealthd.ventana
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
