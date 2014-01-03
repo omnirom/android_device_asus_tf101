@@ -124,7 +124,8 @@ BOARD_HAVE_GPS := true
 
 # Ventana HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-	libdumpstate.ventana
+	libdumpstate.ventana \
+	libhealthd.ventana
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
@@ -153,9 +154,6 @@ TARGET_KERNEL_CONFIG := sid_selinux_defconfig
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
-
-# Support for dock battery
-#TARGET_HAS_DOCK_BATTERY := true
 
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
