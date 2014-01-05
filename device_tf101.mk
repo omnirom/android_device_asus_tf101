@@ -189,13 +189,18 @@ WIFI_BAND := 802_11_ABG
 # Prebuilt config files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/bin/sysrw:system/bin/sysrw \
+    $(LOCAL_PATH)/configs/bin/sysro:system/bin/sysro \
+    $(LOCAL_PATH)/configs/bin/rootrw:system/bin/rootrw \
+    $(LOCAL_PATH)/configs/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    $(LOCAL_PATH)/configs/media/PFFprec_600.emd:system/media/PFFprec_600.emd \
+    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.dat:system/usr/share/zoneinfo/zoneinfo.dat \
+    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.idx:system/usr/share/zoneinfo/zoneinfo.idx  \
+    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.version:system/usr/share/zoneinfo/zoneinfo.version
 
 #Bring in camera media effects
 $(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
-
-$(call inherit-product-if-exists, vendor/eos/filesystem_overlay/overlay.mk)
-DEVICE_PACKAGE_OVERLAYS += vendor/eos/resource_overlay
 
 # $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
