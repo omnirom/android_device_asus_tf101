@@ -72,7 +72,7 @@ BOARD_KERNEL_PAGESIZE :=
 
 #TARGET_BOARD_INFO_FILE := device/asus/tf101/board-info.txt
 
-#BOARD_EGL_CFG := device/asus/tf101/egl.cfg
+BOARD_EGL_CFG := device/asus/tf101/egl.cfg
 BOARD_EGL_SKIP_FIRST_DEQUEUE := true
 BOARD_USES_HGL := true
 BOARD_USES_OVERLAY := true
