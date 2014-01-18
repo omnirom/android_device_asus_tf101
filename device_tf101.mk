@@ -110,15 +110,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/permissions/android.hardware.tf101.xml:system/etc/permissions/android.hardware.tf101.xml
 
 PRODUCT_PACKAGES += \
-	Camera \
-	audio_policy.tegra \
+    audio_policy.tegra \
     audio.primary.tegra \
     audio.a2dp.default \
     audio.usb.default \
     librs_jni \
-	libnetcmdiface \
-	make_ext4fs \
-	setup_fs \
+    libnetcmdiface \
+    make_ext4fs \
+    setup_fs \
     l2ping \
     hcitool \
     bttest \
@@ -127,25 +126,23 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     libinvensense_mpl \
     blobpack_tf \
-	mischelp \
-	thtt \
-	ntfs-3g.probe \
-	ntfsfix \
-	ntfs-3g \
-	fsck.exfat \
-	mount.exfat \
-	mkfs.exfat \
-	PhaseBeam \
-	HoloSpiral \
-	fstrim \
-	libnl \
-	iw \
-	tcpdump \
-	dropbear \
-	scp \
-	sftp \
-	libbt-vendor \
-	ssh-keygen
+    mischelp \
+    thtt \
+    ntfs-3g.probe \
+    ntfsfix \
+    ntfs-3g \
+    fsck.exfat \
+    mount.exfat \
+    mkfs.exfat \
+    fstrim \
+    libnl \
+    iw \
+    tcpdump \
+    dropbear \
+    scp \
+    sftp \
+    libbt-vendor \
+    ssh-keygen
 
 PRODUCT_CHARACTERISTICS := tablet
 
