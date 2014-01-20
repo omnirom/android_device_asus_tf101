@@ -158,25 +158,15 @@ RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
 
-# SELINUX Defines
-#BOARD_SEPOLICY_DIRS := \
-#    device/asus/tf101/sepolicy
+#SELINUX Defines
+BOARD_SEPOLICY_DIRS := \
+    device/asus/tf101/sepolicy
 
-#BOARD_SEPOLICY_UNION := \
-#    file_contexts \
-#    genfs_contexts \
-#    app.te \
-#    bdaddwriter.te \
-#    device.te \
-#    drmserver.te \
-#    init_shell.te \
-#    file.te \
-#    rild.te \
-#    sensors_config.te \
-#    shell.te \
-#    surfaceflinger.te \
-#    system.te \
-#    zygote.te
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    file.te \
+    device.te \
+    domain.t
 
 # TWRP Settings
 DEVICE_RESOLUTION := 1280x800
