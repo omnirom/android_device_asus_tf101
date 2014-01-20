@@ -158,6 +158,9 @@ RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
 
+#Set Permissive for Now
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+
 # SELINUX Defines
 #BOARD_SEPOLICY_DIRS := \
 #    device/asus/tf101/sepolicy
