@@ -6,8 +6,8 @@
     "revision":     "android-4.4"
   },
   {
-    "remote":       "github",
-    "repository":   "CyanogenMod/android_device_generic_armv7-a",
+    "remote":       "omnirom",
+    "repository":   "android_device_generic_armv7-a",
     "target_path":  "device/generic/armv7-a",
     "revision":     "cm-10.1"
   }
