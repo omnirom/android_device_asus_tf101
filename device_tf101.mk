@@ -14,7 +14,7 @@
 # limitations under the License.
 
 # Need to change to 'arm-eabi-4.4.3' to build the recovery kernel instead of using prebuilt recovery kernel. This also directs the toolchain to use for normal ROM kernel build
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-L4.7
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 $(call inherit-product-if-exists, vendor/widevine/tf101/device-tf101.mk)
@@ -27,7 +27,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
 	$(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
-	$(LOCAL_PATH)/recovery/init.recovery.ventana.rc:root/init.recovery.ventana.rc \
 	$(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Bluetooth configuration files
@@ -61,6 +60,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd.bin:system/vendor/firmware/fw_bcmdhd.bin \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd_apsta.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd_p2p.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin
+	
+# Dock firmware
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/etc/firmware/EC/FU-d.cfg:system/etc/firmware/EC/FU-d.cfg \
+	$(LOCAL_PATH)/prebuilt/etc/firmware/EC/SL101-DOCK-0106.rom:system/etc/firmware/EC/SL101-DOCK-0106.rom \
+	$(LOCAL_PATH)/prebuilt/etc/firmware/EC/TF101-DOCK-0213.rom:system/etc/firmware/EC/TF101-DOCK-0213.rom \
+	$(LOCAL_PATH)/prebuilt/etc/firmware/EC/TF101G-DOCK-0213.rom:system/etc/firmware/EC/TF101G-DOCK-0213.rom
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
@@ -70,6 +76,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bq.gpu_to_cpu_unsupported=1 \
     dalvik.vm.dexopt-data-only=1 \
     debug.hwui.render_dirty_regions=false \
+    persist.tegra.nvmmlite=1 \
     ro.zygote.disable_gl_preload=true \
     tf.enable=y \
     ro.opengles.version=131072 \
@@ -109,6 +116,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     $(LOCAL_PATH)/prebuilt/etc/permissions/android.hardware.tf101.xml:system/etc/permissions/android.hardware.tf101.xml
 
+PRODUCT_CHARACTERISTICS := tablet
+
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
 PRODUCT_PACKAGES += \
     audio_policy.tegra \
     audio.primary.tegra \
@@ -144,11 +156,6 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     ssh-keygen
 
-PRODUCT_CHARACTERISTICS := tablet
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 # media config xml file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml
@@ -173,11 +180,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
-# Disable SELinux
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.boot.selinux=disabled \
-    ro.build.selinux=0
+# SELinux
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	ro.boot.selinux=permissive
 
+#ADDITIONAL_DEFAULT_PROPERTIES += \
+#	ro.adb.secure=0
+			
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)    
 
@@ -187,14 +196,11 @@ WIFI_BAND := 802_11_ABG
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/bin/sysrw:system/bin/sysrw \
-    $(LOCAL_PATH)/configs/bin/sysro:system/bin/sysro \
-    $(LOCAL_PATH)/configs/bin/rootrw:system/bin/rootrw \
-    $(LOCAL_PATH)/configs/media/LMprec_508.emd:system/media/LMprec_508.emd \
-    $(LOCAL_PATH)/configs/media/PFFprec_600.emd:system/media/PFFprec_600.emd \
-    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.dat:system/usr/share/zoneinfo/zoneinfo.dat \
-    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.idx:system/usr/share/zoneinfo/zoneinfo.idx  \
-    $(LOCAL_PATH)/configs/usr/share/zoneinfo/zoneinfo.version:system/usr/share/zoneinfo/zoneinfo.version
+    $(LOCAL_PATH)/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    $(LOCAL_PATH)/media/PFFprec_600.emd:system/media/PFFprec_600.emd \
+    $(LOCAL_PATH)/prebuilt/usr/share/zoneinfo/zoneinfo.dat:system/usr/share/zoneinfo/zoneinfo.dat \
+    $(LOCAL_PATH)/prebuilt/usr/share/zoneinfo/zoneinfo.idx:system/usr/share/zoneinfo/zoneinfo.idx  \
+    $(LOCAL_PATH)/prebuilt/usr/share/zoneinfo/zoneinfo.version:system/usr/share/zoneinfo/zoneinfo.version
 
 #Bring in camera media effects
 $(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
