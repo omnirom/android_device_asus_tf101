@@ -2,11 +2,11 @@
 
 <permissions>
     <!-- hardware extras for the tf101 -->
-    <feature name="eos.hardware.dock" />
-    <feature name="eos.hardware.hall_sensor" />
-    <feature name="eos.hardware.keyboard" />
-    <feature name="eos.hardware.fw.dock_ec" />
-    <feature name="eos.hardware.fw.touch" />
-    <feature name="eos.hardware.sound.srs" />
-    <feature name="eos.hardware.gps" />
+    <feature name="asus.hardware.dock" />
+    <feature name="asus.hardware.hall_sensor" />
+    <feature name="asus.hardware.keyboard" />
+    <feature name="asus.hardware.fw.dock_ec" />
+    <feature name="asus.hardware.fw.touch" />
+    <feature name="asus.hardware.sound.srs" />
+    <feature name="asus.hardware.gps" />
 </permissions>

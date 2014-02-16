@@ -22,12 +22,10 @@
 
 LOCAL_PATH := device/asus/tf101
 BOARD_NEEDS_LZMA_MINIGZIP := true
+TARGET_OTA_ASSERT_DEVICE := tf101
 
 # Audio Options
-USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USE_NVIDIA_AUDIO := true
-BOARD_USES_TINY_AUDIO_HW := true
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 
 # Camera options
@@ -47,7 +45,7 @@ SMALLER_FONT_FOOTPRINT := true
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf101/BoardConfigVendor.mk
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := tegra
@@ -64,13 +62,13 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT_FPU := vfpv3-d16
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_USE_NON_NEON_MEMCPY := true
-ARCH_ARM_HIGH_OPTIMIZATION := true
+#ARCH_ARM_HIGH_OPTIMIZATION := true
 
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE :=
 
-#TARGET_BOARD_INFO_FILE := device/asus/tf101/board-info.txt
+TARGET_BOARD_INFO_FILE := device/asus/tf101/board-info.txt
 
 BOARD_EGL_CFG := device/asus/tf101/egl.cfg
 BOARD_EGL_SKIP_FIRST_DEQUEUE := true
@@ -83,7 +81,6 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 SKIP_SET_METADATA := true
 ENABLE_WEBGL := true
 BOARD_USE_MHEAP_SCREENSHOT := true
-#TARGET_USES_OPENGLES_FOR_SCREEN_CAPTURE := true
 BOARD_USES_HWCOMPOSER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 BOARD_NEEDS_OLD_HWC_API := true
@@ -94,7 +91,7 @@ BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
-TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
+#TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -115,15 +112,16 @@ WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/fw_bcmdhd.bin"
 #WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
-#Custom Recovery UI
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/asus/tf101/recovery_ui.c
-
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_HAVE_GPS := true
+
+# Ventana HAL libraries
+BOARD_HAL_STATIC_LIBRARIES := \
+	libdumpstate.ventana
 
 # Support for dock battery
 TARGET_HAS_DOCK_BATTERY := true
@@ -136,7 +134,7 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf10
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 BOARD_MALLOC_ALIGNMENT := 16
-TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
+#TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
@@ -145,7 +143,7 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 
 #define to use all of the Linaro Cortex-A9 optimized string funcs,
 #instead of subset known to work on all machines
-USE_ALL_OPTIMIZED_STRING_FUNCS := true
+#USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf101
@@ -159,30 +157,10 @@ RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
 
-# SELINUX Defines
-#BOARD_SEPOLICY_DIRS := \
-#    device/asus/tf101/sepolicy
-
-#BOARD_SEPOLICY_UNION := \
-#    file_contexts \
-#    genfs_contexts \
-#    app.te \
-#    bdaddwriter.te \
-#    device.te \
-#    drmserver.te \
-#    init_shell.te \
-#    file.te \
-#    rild.te \
-#    sensors_config.te \
-#    shell.te \
-#    surfaceflinger.te \
-#    system.te \
-#    zygote.te
-
 # TWRP Settings
 DEVICE_RESOLUTION := 1280x800
 RECOVERY_SDCARD_ON_DATA := true
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard1"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
