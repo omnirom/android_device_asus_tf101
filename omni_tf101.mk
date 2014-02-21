@@ -26,6 +26,9 @@ $(call inherit-product, device/asus/tf101/full_tf101.mk)
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
+# Low-FPS Bootanimation
+BOARD_NEEDS_LOWFPS_BOOTANI := true
+
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := omni_tf101
 PRODUCT_DEVICE := tf101
