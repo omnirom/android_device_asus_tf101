@@ -114,7 +114,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    $(LOCAL_PATH)/prebuilt/etc/permissions/android.hardware.tf101.xml:system/etc/permissions/android.hardware.tf101.xml
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -137,6 +137,7 @@ PRODUCT_PACKAGES += \
     whisperd \
     libaudioutils \
     libinvensense_mpl \
+	libemoji \
     blobpack_tf \
     mischelp \
     thtt \

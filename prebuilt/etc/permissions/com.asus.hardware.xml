@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <permissions>
-    <!-- hardware extras for the tf101 -->
+    <!-- Asus epad hardware feature-->
     <feature name="asus.hardware.dock" />
     <feature name="asus.hardware.hall_sensor" />
     <feature name="asus.hardware.keyboard" />
@@ -9,4 +9,5 @@
     <feature name="asus.hardware.fw.touch" />
     <feature name="asus.hardware.sound.srs" />
     <feature name="asus.hardware.gps" />
+    <feature name="asus.hardware.wifi.direct" />
 </permissions>

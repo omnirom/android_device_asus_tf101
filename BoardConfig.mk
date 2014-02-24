@@ -25,7 +25,10 @@ BOARD_NEEDS_LZMA_MINIGZIP := true
 TARGET_OTA_ASSERT_DEVICE := tf101
 
 # Audio Options
+USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_ALSA_AUDIO := false
+BOARD_USES_TINY_AUDIO_HW := false
 BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 
 # Camera options
@@ -61,8 +64,8 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT_FPU := vfpv3-d16
 ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_USE_NON_NEON_MEMCPY := true
-#ARCH_ARM_HIGH_OPTIMIZATION := true
+#ARCH_ARM_USE_NON_NEON_MEMCPY := true
+ARCH_ARM_HIGH_OPTIMIZATION := true
 
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
@@ -91,7 +94,7 @@ BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
-#TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
+TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -120,11 +123,8 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_GPS := true
 
 # Ventana HAL libraries
-BOARD_HAL_STATIC_LIBRARIES := \
+BOARD_HAL_STATIC_LIBRARIES += \
 	libdumpstate.ventana
-
-# Support for dock battery
-TARGET_HAS_DOCK_BATTERY := true
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
@@ -134,7 +134,7 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf10
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 BOARD_MALLOC_ALIGNMENT := 16
-#TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
+TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
@@ -143,7 +143,7 @@ SENSORS_NEED_SETRATE_ON_ENABLE := true
 
 #define to use all of the Linaro Cortex-A9 optimized string funcs,
 #instead of subset known to work on all machines
-#USE_ALL_OPTIMIZED_STRING_FUNCS := true
+USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf101
@@ -153,6 +153,9 @@ TARGET_KERNEL_CONFIG := sid_selinux_defconfig
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
+
+# Support for dock battery
+#TARGET_HAS_DOCK_BATTERY := true
 
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel

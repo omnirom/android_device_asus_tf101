@@ -18,6 +18,7 @@
 */
 -->
 <resources>
+
     <!-- Storage description for internal storage. [CHAR LIMIT=NONE] -->
     <string name="storage_internal">Internal Storage</string>
 
