@@ -240,6 +240,9 @@
 <!-- Separate software navigation bar required on this device. -->
     <bool name="config_showNavigationBar">true</bool>
 
+<!--    <bool name="config_hasDockBattery">true</bool> -->
+<!--    <bool name="config_hasTouchpad">true</bool> -->
+
 <!-- We now need to use a constant bool as reference
      for whether or not this is a hybrid ui device, i.e. grouper. -->
 <!--    <bool name="config_isHybridUiDevice">true</bool>
@@ -247,10 +250,20 @@
     <integer name="config_desiredWallpaperSizeMaxHeight">1280</integer>
 -->
 
+    <!-- Use asusdec -->
+    <add-resource type="string" name="config_deviceKeyHandlerLib"></add-resource>
+    <string name="config_deviceKeyHandlerLib" translatable="false">
+        /system/framework/com.omnirom.asusdec.jar</string>
+    <add-resource type="string" name="config_deviceKeyHandlerClass"></add-resource>
+    <string name="config_deviceKeyHandlerClass" translatable="false">
+        com.omnirom.asusdec.KeyHandler</string>
+
     <!-- Flag indicating whether the surface flinger has limited
          alpha compositing functionality in hardware.  If set, the window
          manager will disable alpha trasformation in animations where not
          strictly needed. -->
 <!--    <bool name="config_sf_limitedAlpha">true</bool> -->
-	<bool name="config_hasRemovableLid">true</bool>
+    <bool name="config_hasRemovableLid">true</bool>
+    <integer name="config_lidKeyboardAccessibility">1</integer>
+    <integer name="config_lidNavigationAccessibility">1</integer>
 </resources>
