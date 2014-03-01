@@ -23,8 +23,8 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/asus/tf101/full_tf101.mk)
 
 # Configure as xhdpi device to prevent breaking without mdpi drawables
-PRODUCT_AAPT_CONFIG := normal mdpi hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_AAPT_CONFIG := xlarge hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := omni_tf101
