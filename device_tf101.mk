@@ -114,7 +114,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml \
+    $(LOCAL_PATH)/asusdec/com.omnirom.asusdec.xml:system/etc/permissions/com.omnirom.asusdec.xml
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -138,6 +139,7 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     libinvensense_mpl \
     libemoji \
+    AutoParts \
     blobpack_tf \
     mischelp \
     thtt \
@@ -155,7 +157,9 @@ PRODUCT_PACKAGES += \
     scp \
     sftp \
     libbt-vendor \
-    ssh-keygen
+    ssh-keygen \
+    com.omnirom.asusdec \
+    libasusdec_jni
 
 # media config xml file
 PRODUCT_COPY_FILES += \
