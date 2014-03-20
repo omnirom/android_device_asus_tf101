@@ -24,9 +24,12 @@ DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 # Ramdisk files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/fstab.ventana:root/fstab.ventana \
+    $(LOCAL_PATH)/ramdisk/init.ventana.keyboard.rc:root/init.ventana.keyboard.rc \
 	$(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
 	$(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
+    $(LOCAL_PATH)/prebuilt/sbin/remount:root/sbin/remount \
+    $(LOCAL_PATH)/prebuilt/sbin/keyswap::root/sbin/keyswap \
 	$(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Bluetooth configuration files
@@ -114,7 +117,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml \
+    $(LOCAL_PATH)/asusec/org.omnirom.asusec.xml:system/etc/permissions/org.omnirom.asusec.xml
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -137,6 +141,7 @@ PRODUCT_PACKAGES += \
     whisperd \
     libaudioutils \
     libinvensense_mpl \
+    AutoParts \
     libemoji \
     blobpack_tf \
     mischelp \
@@ -155,7 +160,9 @@ PRODUCT_PACKAGES += \
     scp \
     sftp \
     libbt-vendor \
-    ssh-keygen
+    ssh-keygen \
+    org.omnirom.asusec \
+    libasusec_jni
 
 # media config xml file
 PRODUCT_COPY_FILES += \
