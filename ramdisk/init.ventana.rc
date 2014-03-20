@@ -1,5 +1,4 @@
 import init.ventana.usb.rc
-#import init.ventana.keyboard.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
