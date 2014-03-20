@@ -97,7 +97,7 @@ BOARD_NEEDS_LOWFPS_BOOTANI := true
 
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
-TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
+#TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
