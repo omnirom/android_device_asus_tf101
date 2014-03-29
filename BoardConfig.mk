@@ -25,7 +25,7 @@ BOARD_NEEDS_LZMA_MINIGZIP := true
 TARGET_OTA_ASSERT_DEVICE := tf101
 
 # Audio Options
-USE_PROPRIETARY_AUDIO_EXTENSIONS := true
+USE_PROPRIETARY_AUDIO_EXTENSIONS := false
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
 BOARD_USES_TINY_AUDIO_HW := false
@@ -97,7 +97,7 @@ BOARD_NEEDS_LOWFPS_BOOTANI := true
 
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
-TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
+#TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -127,7 +127,8 @@ BOARD_HAVE_GPS := true
 
 # Ventana HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-	libdumpstate.ventana
+	libdumpstate.ventana \
+	libhealthd.ventana
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
@@ -156,9 +157,6 @@ TARGET_KERNEL_CONFIG := sid_selinux_defconfig
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
-
-# Support for dock battery
-#TARGET_HAS_DOCK_BATTERY := true
 
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
