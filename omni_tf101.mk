@@ -15,6 +15,9 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
+# Low-FPS Bootanimation
+USE_LOWFPS_BOOTANI := true
+
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common_tablet.mk)
 
