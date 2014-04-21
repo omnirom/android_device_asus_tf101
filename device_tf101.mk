@@ -190,13 +190,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
-# SELinux
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	ro.boot.selinux=permissive
-
-#ADDITIONAL_DEFAULT_PROPERTIES += \
-#	ro.adb.secure=0
-
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)    
 

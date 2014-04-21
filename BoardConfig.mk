@@ -21,7 +21,6 @@
 #
 
 LOCAL_PATH := device/asus/tf101
-BOARD_NEEDS_LZMA_MINIGZIP := true
 TARGET_OTA_ASSERT_DEVICE := tf101
 
 # Audio Options
@@ -48,8 +47,6 @@ SMALLER_FONT_FOOTPRINT := true
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf101/BoardConfigVendor.mk
 
-DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
-
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := tegra
 TARGET_TEGRA_VERSION := t20
@@ -64,7 +61,6 @@ TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT_FPU := vfpv3-d16
 ARCH_ARM_HAVE_TLS_REGISTER := true
-#ARCH_ARM_USE_NON_NEON_MEMCPY := true
 ARCH_ARM_HIGH_OPTIMIZATION := true
 
 BOARD_KERNEL_CMDLINE :=
@@ -88,13 +84,13 @@ BOARD_USES_HWCOMPOSER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 BOARD_NEEDS_OLD_HWC_API := true
 BOARD_NEED_OMX_COMPAT := true
+BOARD_NEEDS_LZMA_MINIGZIP := true
 
 BOARD_USE_SKIA_LCDTEXT := true
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 
 # Recovery and boot.img settings
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
-#TARGET_RECOVERY_INITRC := device/asus/tf101/recovery/init.recovery.ventana.rc
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -112,7 +108,6 @@ BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE           := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/fw_bcmdhd.bin"
-#WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -135,8 +130,9 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf10
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 BOARD_MALLOC_ALIGNMENT := 16
-TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 
+#C-Flag Settings
+TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Compatibility with pre-kitkat Sensor HALs
@@ -149,12 +145,12 @@ USE_ALL_OPTIMIZED_STRING_FUNCS := true
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf101
 TARGET_KERNEL_CONFIG := sid_selinux_defconfig
-#TARGET_PREBUILT_KERNEL := device/asus/tf101/prebuilt/kernel
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
 
+#Recovery Kernel
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
 
@@ -176,7 +172,6 @@ TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "data=ordered,delalloc"
 TW_CRYPTO_FS_FLAGS := "0x00000406"
 TW_CRYPTO_KEY_LOC := "footer"
-
 TWRP_CUSTOM_KEYBOARD := ../../../device/asus/tf101/recovery/hardwarekeyboard.cpp
 
 
