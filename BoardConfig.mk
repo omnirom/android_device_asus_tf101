@@ -146,6 +146,9 @@ USE_ALL_OPTIMIZED_STRING_FUNCS := true
 TARGET_KERNEL_SOURCE := kernel/asus/tf101
 TARGET_KERNEL_CONFIG := primus_tf101_defconfig
 
+# exFAT kernel module support
+KERNEL_EXFAT_MODULE_NAME := "exfat"
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
