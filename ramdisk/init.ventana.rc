@@ -36,6 +36,8 @@ on init
 
 on fs
     mount_all /fstab.ventana
+    swapon_all /fstab.ventana
+    write /proc/sys/vm/page-cluster 0
     setprop ro.crypto.fuse_sdcard true
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
@@ -60,7 +62,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
-    insmod /system/lib/modules/battery_rvsd.ko
+
 # bluetooth
     # UART device
     chmod 0660 /dev/ttyHS2
@@ -133,9 +135,6 @@ on boot
     write /sys/class/gpio/gpio203/direction out
     chown root system /sys/class/gpio/gpio203/value
     chmod 0664 /sys/class/gpio/gpio203/value
-
-#NTFS exFAT support
-#    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -274,17 +273,17 @@ on property:sys.shutdown.requested=1recovery
     start recoveryd
 
 # Prepare TF service
-service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
-    disabled
-    class main
-    user root
-    group shell
-    oneshot
+#service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
+#    disabled
+#    class main
+#    user root
+#    group shell
+#    oneshot
 
 # Create data directory and start service
-on property:tf.enable=y
-    mkdir /data/tf
-    start tf_daemon
+#on property:tf.enable=y
+#    mkdir /data/tf
+#    start tf_daemon
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
@@ -316,15 +315,15 @@ on nonencrypted
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
 
-service BtService /system/bin/sh /system/etc/BtService.sh
-     user root
-     group root
-     disabled
-     oneshot
+#service BtService /system/bin/sh /system/etc/BtService.sh
+#     user root
+#     group root
+#     disabled
+#     oneshot
 
-service ps3service /system/bin/ps3service
-    class main
-    user root
-    group root
-    disabled
-    oneshot
+#service ps3service /system/bin/ps3service
+#    class main
+#    user root
+#    group root
+#    disabled
+#    oneshot

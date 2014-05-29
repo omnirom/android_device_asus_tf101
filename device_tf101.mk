@@ -14,11 +14,9 @@
 # limitations under the License.
 
 # Need to change to 'arm-eabi-4.4.3' to build the recovery kernel instead of using prebuilt recovery kernel. This also directs the toolchain to use for normal ROM kernel build
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro-4.8
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
-$(call inherit-product-if-exists, vendor/widevine/tf101/device-tf101.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
@@ -33,6 +31,9 @@ PRODUCT_COPY_FILES += \
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
+    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
+    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd \
+    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0942.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0942.hcd \
     $(LOCAL_PATH)/prebuilt/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr \
     $(LOCAL_PATH)/prebuilt/etc/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
@@ -85,7 +86,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.zygote.disable_gl_preload=true \
     tf.enable=y \
     ro.opengles.version=131072 \
-	ro.opengles.surface.rgb565=true
+	ro.opengles.surface.rgb565=true \
+    drm.service.enabled=1
 
 # TF101 specific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -120,6 +122,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.xml:system/etc/permissions/com.asus.hardware.xml \
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml \
     $(LOCAL_PATH)/asusec/org.omnirom.asusec.xml:system/etc/permissions/org.omnirom.asusec.xml
 
 PRODUCT_CHARACTERISTICS := tablet
@@ -146,7 +151,6 @@ PRODUCT_PACKAGES += \
     AutoParts \
     libemoji \
     blobpack_tf \
-    mischelp \
     thtt \
     ntfs-3g.probe \
     ntfsfix \
@@ -178,10 +182,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/nvcamera.conf:system/etc/nvcamera.conf
 
-# Bluetooth config file
-#PRODUCT_COPY_FILES += \
-#    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
-
 # audio mixer paths
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
@@ -205,8 +205,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/share/zoneinfo/zoneinfo.idx:system/usr/share/zoneinfo/zoneinfo.idx  \
     $(LOCAL_PATH)/prebuilt/usr/share/zoneinfo/zoneinfo.version:system/usr/share/zoneinfo/zoneinfo.version
 
+# OMX player test
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/lib/omxplayer.so:system/lib/omxplayer.so \
+    $(LOCAL_PATH)/prebuilt/lib/libdrm1.so:system/lib/libdrm1.so \
+    $(LOCAL_PATH)/prebuilt/lib/libdrm1_jni.so:system/lib/libdrm1_jni.so
+
 #Bring in camera media effects
 $(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
 
-# $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
