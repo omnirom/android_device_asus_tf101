@@ -32,6 +32,12 @@ PRODUCT_AAPT_PREF_CONFIG := mdpi
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := omni_tf101
 PRODUCT_DEVICE := tf101
-PRODUCT_BRAND := Asus
-PRODUCT_MODEL := TF101
+PRODUCT_BRAND := asus
+PRODUCT_MODEL := Transformer TF101
 PRODUCT_MANUFACTURER := asus
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=US_epad \
+    BUILD_FINGERPRINT="asus/US_epad/TF101:4.0.3/IML74K/US_epad-9.2.1.27-20120615:user/release-keys" \
+    PRIVATE_BUILD_DESC="US_epad-user 4.0.3 IML74K US_epad-9.2.1.27-20120615 release-keys"
+
+

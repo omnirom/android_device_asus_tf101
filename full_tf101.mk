@@ -27,13 +27,18 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
+# Inherit from those products. Most specific first.
+$(call inherit-product, device/asus/tf101/device_tf101.mk)
+
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_tf101
 PRODUCT_DEVICE := tf101
-PRODUCT_BRAND := Asus
-PRODUCT_MODEL := TF101
+PRODUCT_BRAND := asus
+PRODUCT_MODEL := Transformer TF101
 PRODUCT_MANUFACTURER := asus
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=US_epad \
+    BUILD_FINGERPRINT="asus/US_epad/TF101:4.0.3/IML74K/US_epad-9.2.1.27-20120615:user/release-keys" \
+    PRIVATE_BUILD_DESC="US_epad-user 4.0.3 IML74K US_epad-9.2.1.27-20120615 release-keys"
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, device/asus/tf101/device_tf101.mk)
 

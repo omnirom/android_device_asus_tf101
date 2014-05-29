@@ -48,15 +48,15 @@
 #define OUT_PERIOD_SIZE 1024
 #define OUT_SHORT_PERIOD_COUNT 2
 #define OUT_LONG_PERIOD_COUNT 8
-#define OUT_SAMPLING_RATE 44100
+#define OUT_SAMPLING_RATE 48000
 
 #define IN_PERIOD_SIZE 1024
 #define IN_PERIOD_COUNT 4
-#define IN_SAMPLING_RATE 44100
+#define IN_SAMPLING_RATE 48000
 
 #define SCO_PERIOD_SIZE 1024
 #define SCO_PERIOD_COUNT 4
-#define SCO_SAMPLING_RATE 44100
+#define SCO_SAMPLING_RATE 48000
 
 /* minimum sleep time in out_write() when write threshold is not reached */
 #define MIN_WRITE_SLEEP_US 2000

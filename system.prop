@@ -2,4 +2,6 @@
 # system.prop for tf101
 #
 ro.carrier=wifi-only
-ro.sf.lcd_density=160
+ro.wifi.country=US
+sensor.loop.minms=0
+
