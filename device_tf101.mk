@@ -37,10 +37,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr \
     $(LOCAL_PATH)/prebuilt/etc/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
-# Netflix fix
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/init.d/98netflix:system/etc/init.d/98netflix
-
 # Misc
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/wifimacwriter:system/bin/wifimacwriter \
