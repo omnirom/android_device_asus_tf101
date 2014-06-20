@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Need to change to 'arm-eabi-4.4.3' to build the recovery kernel instead of using prebuilt recovery kernel. This also directs the toolchain to use for normal ROM kernel build
+# Uncomment the following to change to 'arm-eabi-4.4.3' to build the recovery kernel instead of using prebuilt recovery kernel. This WILL also use the same toolchain to use for normal ROM kernel build, so remember to comment it back out or point it at the appropriate tool chain to use for normal kernel.
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)

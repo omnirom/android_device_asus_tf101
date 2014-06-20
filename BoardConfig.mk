@@ -95,7 +95,9 @@ BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf101/recovery/recovery.mk
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
+# Comment the following if using custom optimizations that result in too large recovery.img stopping build, keeping in mind that said recovery.img is NOT usable if > 5MB size.
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 5242880
+# Uncomment the following and comment above if recovery.img size stopping desired build.
 #BOARD_RECOVERYIMAGE_PARTITION_SIZE := 6242880 #To allow user build to complete, NOT a usable recovery.img for tf101
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 14372306944
@@ -137,13 +139,15 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 # Compatibility with pre-kitkat Sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
 
-#define to use all of the Linaro Cortex-A9 optimized string funcs,
-#instead of subset known to work on all machines
+# define to use all of the Linaro Cortex-A9 optimized string funcs,
+# instead of subset known to work on all machines
 USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf101
 TARGET_KERNEL_CONFIG := primus_tf101_defconfig
+# Comment out above and uncomment below to build recovery kernel, after switching source
+#TARGET_KERNEL_CONFIG := sid_selinux_defconfig
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -155,7 +159,8 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/tf101/bluetooth
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/asus/tf101/ramdisk/fstab.ventana
 
-#Recovery Kernel
+# Recovery Kernel
+# Comment the following line to build recovery kernel with appropriate source
 TARGET_PREBUILT_RECOVERY_KERNEL := device/asus/tf101/recovery/kernel
 
 # TWRP Settings
