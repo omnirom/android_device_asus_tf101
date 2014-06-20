@@ -12,17 +12,17 @@ on init
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard2 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk0 0700 media_rw media_rw
     mkdir /mnt/media_rw/usbdisk1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk2 0700 media_rw media_rw
     
     #mkdir /storage/sdcard0 0666 system system
     mkdir /storage/sdcard1 0700 root root
     mkdir /storage/sdcard2 0700 root root
-    mkdir /storage/usbdisk0 0700 root root
     mkdir /storage/usbdisk1 0700 root root
+    mkdir /storage/usbdisk2 0700 root root
     
     export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1:/storage/sdcard2:/storage/usbdisk0:/storage/usbdisk1
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/sdcard2:/storage/usbdisk1:/storage/usbdisk2
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
@@ -297,11 +297,11 @@ service fuse_sdcard2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard2
     class late_start
     disabled
     
-service fuse_usbdisk0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk0 /storage/usbdisk0
+service fuse_usbdisk1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk1 /storage/usbdisk1
     class late_start
     disabled
 
-service fuse_usbdisk1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk1 /storage/usbdisk1
+service fuse_usbdisk2 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk2 /storage/usbdisk2
     class late_start
     disabled
     
